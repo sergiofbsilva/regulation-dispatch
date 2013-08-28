@@ -39,9 +39,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import pt.ist.bennu.core.applicationTier.Authenticate.UserView;
 import pt.ist.bennu.core.domain.User;
 import pt.ist.bennu.core.presentationTier.actions.ContextBaseAction;
+import pt.ist.bennu.core.security.Authenticate;
 import pt.ist.fenixWebFramework.renderers.utils.RenderUtils;
 import pt.ist.fenixWebFramework.struts.annotations.Mapping;
 
@@ -56,7 +56,7 @@ public class ManageRegulationDispatchQueues extends ContextBaseAction {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        User currentUser = UserView.getCurrentUser();
+        User currentUser = Authenticate.getUser();
 
         if (!RegulationDispatchUtils.isMyOrgManager(currentUser)) {
             return new ActionForward("/regulationDispatch.do?method=prepare", true);

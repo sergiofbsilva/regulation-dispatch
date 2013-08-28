@@ -43,10 +43,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import pt.ist.bennu.core.applicationTier.Authenticate.UserView;
 import pt.ist.bennu.core.domain.User;
 import pt.ist.bennu.core.presentationTier.Context;
 import pt.ist.bennu.core.presentationTier.actions.ContextBaseAction;
+import pt.ist.bennu.core.security.Authenticate;
 import pt.ist.fenixWebFramework.renderers.utils.RenderUtils;
 import pt.ist.fenixWebFramework.servlets.filters.contentRewrite.GenericChecksumRewriter;
 import pt.ist.fenixWebFramework.struts.annotations.Mapping;
@@ -93,7 +93,7 @@ public class CreateRegulationDispatchAction extends ContextBaseAction {
             final HttpServletResponse response) {
         CreateRegulationDispatchBean bean = getRenderedObject("bean");
         RegulationDispatchQueue queue = readQueue(request);
-        User user = UserView.getCurrentUser();
+        User user = Authenticate.getUser();
 
         try {
             RegulationDispatchWorkflowMetaProcess.createNewProcess(bean, user);

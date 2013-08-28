@@ -38,7 +38,7 @@ import module.regulation.dispatch.domain.RegulationDispatchProcessFile;
 import module.regulation.dispatch.domain.RegulationDispatchSystem;
 import module.regulation.dispatch.domain.exceptions.RegulationDispatchException;
 import module.workflow.domain.ProcessFile;
-import pt.ist.bennu.core.util.BundleUtil;
+import pt.ist.bennu.core.i18n.BundleUtil;
 import pt.utl.ist.fenix.tools.util.i18n.Language;
 import pt.utl.ist.fenix.tools.util.i18n.MultiLanguageString;
 
@@ -109,6 +109,6 @@ public class MetaTypeFactory {
     }
 
     public static String getKey(String key) {
-        return BundleUtil.getStringFromResourceBundle("resources/RegulationDispatchResources", key);
+        return BundleUtil.getString("resources/RegulationDispatchResources", key);
     }
 }

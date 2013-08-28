@@ -26,8 +26,6 @@ package module.regulation.dispatch.domain;
 
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-
 import module.workflow.domain.AbstractWFDocsGroup;
 import module.workflow.domain.ProcessDocumentMetaDataResolver;
 import module.workflow.domain.ProcessFile;
@@ -77,8 +75,7 @@ public class RegulationDispatchProcessFile extends RegulationDispatchProcessFile
         private static final String ARTICLES = "Artigos";
 
         @Override
-        public @Nonnull
-        Class<? extends AbstractWFDocsGroup> getWriteGroupClass() {
+        public Class<? extends AbstractWFDocsGroup> getWriteGroupClass() {
             return WFDocsDefaultWriteGroup.class;
         }
 

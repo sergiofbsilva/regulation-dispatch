@@ -33,7 +33,7 @@ import module.workflow.domain.WorkflowProcess;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import pt.ist.bennu.core.domain.scheduler.WriteCustomTask;
+import pt.ist.bennu.scheduler.custom.CustomTask;
 import pt.ist.fenixframework.FenixFramework;
 
 /**
@@ -41,10 +41,10 @@ import pt.ist.fenixframework.FenixFramework;
  * @author Anil Kassamali
  * 
  */
-public class SetEmissionDate extends WriteCustomTask {
+public class SetEmissionDate extends CustomTask {
 
     @Override
-    public void doService() {
+    public void runTask() {
         DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("dd.MM.yyyy");
 
         RegulationDispatchQueue queue = readQueue();

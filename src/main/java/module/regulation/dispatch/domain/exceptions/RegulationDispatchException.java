@@ -24,7 +24,7 @@
  */
 package module.regulation.dispatch.domain.exceptions;
 
-import java.util.ResourceBundle;
+import javax.ws.rs.core.Response.Status;
 
 import pt.ist.bennu.core.domain.exceptions.DomainException;
 
@@ -35,26 +35,28 @@ import pt.ist.bennu.core.domain.exceptions.DomainException;
  */
 public class RegulationDispatchException extends DomainException {
 
-    private static final long serialVersionUID = 1L;
+    private static final String BUNDLE = null;
 
-    public RegulationDispatchException() {
-        super();
-    }
-
-    public RegulationDispatchException(String key, ResourceBundle bundle, String... args) {
-        super(key, bundle, args);
+    public RegulationDispatchException(Status status, String key, String... args) {
+        super(status, BUNDLE, key, args);
+        // TODO Auto-generated constructor stub
     }
 
     public RegulationDispatchException(String key, String... args) {
-        super(key, args);
+        super(BUNDLE, key, args);
+        // TODO Auto-generated constructor stub
     }
 
-    public RegulationDispatchException(String key, Throwable cause, ResourceBundle bundle, String... args) {
-        super(key, cause, bundle, args);
+    public RegulationDispatchException(Throwable cause, Status status, String key, String... args) {
+        super(cause, status, BUNDLE, key, args);
+        // TODO Auto-generated constructor stub
     }
 
-    public RegulationDispatchException(String key, Throwable cause, String... args) {
-        super(key, cause, args);
+    public RegulationDispatchException(Throwable cause, String key, String... args) {
+        super(cause, BUNDLE, key, args);
+        // TODO Auto-generated constructor stub
     }
+
+    private static final long serialVersionUID = 1L;
 
 }

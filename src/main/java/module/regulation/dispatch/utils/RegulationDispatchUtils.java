@@ -26,6 +26,7 @@ package module.regulation.dispatch.utils;
 
 import pt.ist.bennu.core.domain.RoleType;
 import pt.ist.bennu.core.domain.User;
+import pt.ist.bennu.core.util.legacy.LegacyUtil;
 
 /**
  * 
@@ -35,6 +36,6 @@ import pt.ist.bennu.core.domain.User;
 public class RegulationDispatchUtils {
 
     public static boolean isMyOrgManager(final User user) {
-        return user.hasRoleType(RoleType.MANAGER);
+        return LegacyUtil.hasRoleType(user, RoleType.MANAGER);
     }
 }

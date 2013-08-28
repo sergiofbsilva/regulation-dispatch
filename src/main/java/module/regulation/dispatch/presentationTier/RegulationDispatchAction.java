@@ -47,17 +47,12 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.joda.time.LocalDate;
 
-import pt.ist.bennu.core.applicationTier.Authenticate.UserView;
 import pt.ist.bennu.core.domain.User;
-import pt.ist.bennu.core.domain.VirtualHost;
-import pt.ist.bennu.core.domain.contents.ActionNode;
-import pt.ist.bennu.core.domain.contents.Node;
-import pt.ist.bennu.core.domain.groups.UserGroup;
 import pt.ist.bennu.core.presentationTier.Context;
 import pt.ist.bennu.core.presentationTier.LayoutContext;
 import pt.ist.bennu.core.presentationTier.actions.ContextBaseAction;
+import pt.ist.bennu.core.security.Authenticate;
 import pt.ist.fenixWebFramework.servlets.filters.contentRewrite.GenericChecksumRewriter;
-import pt.ist.fenixWebFramework.servlets.functionalities.CreateNodeAction;
 import pt.ist.fenixWebFramework.struts.annotations.Mapping;
 
 @Mapping(path = "/regulationDispatch")
@@ -77,22 +72,22 @@ public class RegulationDispatchAction extends ContextBaseAction {
         return super.execute(mapping, form, request, response);
     }
 
-    @CreateNodeAction(bundle = "REGULATION_DISPATCH_RESOURCES", key = "link.node.configuration.regulation.dispatch.interface",
-            groupKey = "title.node.configuration.module.regulation.dispatch")
-    public ActionForward prepareCreateNewPage(final ActionMapping mapping, final ActionForm form,
-            final HttpServletRequest request, final HttpServletResponse response) {
-        final VirtualHost virtualHost = getDomainObject(request, "virtualHostToManageId");
-        final Node node = getDomainObject(request, "parentOfNodesToManageId");
-
-        ActionNode.createActionNode(virtualHost, node, "/regulationDispatch", "prepare", "resources.RegulationDispatchResources",
-                "label.sideBar.regulation.dispatch.manage", UserGroup.getInstance());
-
-        return forwardToMuneConfiguration(request, virtualHost, node);
-    }
+//    @CreateNodeAction(bundle = "REGULATION_DISPATCH_RESOURCES", key = "link.node.configuration.regulation.dispatch.interface",
+//            groupKey = "title.node.configuration.module.regulation.dispatch")
+//    public ActionForward prepareCreateNewPage(final ActionMapping mapping, final ActionForm form,
+//            final HttpServletRequest request, final HttpServletResponse response) {
+//        final VirtualHost virtualHost = getDomainObject(request, "virtualHostToManageId");
+//        final Node node = getDomainObject(request, "parentOfNodesToManageId");
+//
+//        ActionNode.createActionNode(virtualHost, node, "/regulationDispatch", "prepare", "resources.RegulationDispatchResources",
+//                "label.sideBar.regulation.dispatch.manage", UserGroup.getInstance());
+//
+//        return forwardToMuneConfiguration(request, virtualHost, node);
+//    }
 
     public ActionForward prepare(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
             final HttpServletResponse response) {
-        User user = UserView.getCurrentUser();
+        User user = Authenticate.getUser();
         List<RegulationDispatchQueue> queues = RegulationDispatchQueue.getRegulationDispatchQueuesForUser(user);
 
         request.setAttribute("queues", queues);

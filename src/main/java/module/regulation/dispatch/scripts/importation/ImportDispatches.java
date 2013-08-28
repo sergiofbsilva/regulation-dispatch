@@ -35,7 +35,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import pt.ist.bennu.core.domain.User;
-import pt.ist.bennu.core.domain.scheduler.WriteCustomTask;
+import pt.ist.bennu.scheduler.custom.CustomTask;
 import pt.ist.fenixframework.FenixFramework;
 
 /**
@@ -43,10 +43,10 @@ import pt.ist.fenixframework.FenixFramework;
  * @author Anil Kassamali
  * 
  */
-public class ImportDispatches extends WriteCustomTask {
+public class ImportDispatches extends CustomTask {
 
     @Override
-    public void doService() {
+    public void runTask() {
         RegulationDispatchQueue queue = readQueue();
 
         int created = 0;

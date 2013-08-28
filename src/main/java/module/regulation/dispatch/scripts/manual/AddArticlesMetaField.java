@@ -27,8 +27,8 @@ package module.regulation.dispatch.scripts.manual;
 import module.metaWorkflow.domain.MetaFieldSet;
 import module.metaWorkflow.domain.StringsMetaField;
 import module.regulation.dispatch.domain.RegulationDispatchSystem;
-import pt.ist.bennu.core.domain.scheduler.WriteCustomTask;
-import pt.ist.bennu.core.util.BundleUtil;
+import pt.ist.bennu.core.i18n.BundleUtil;
+import pt.ist.bennu.scheduler.custom.CustomTask;
 import pt.utl.ist.fenix.tools.util.i18n.MultiLanguageString;
 
 /**
@@ -36,10 +36,10 @@ import pt.utl.ist.fenix.tools.util.i18n.MultiLanguageString;
  * @author Anil Kassamali
  * 
  */
-public class AddArticlesMetaField extends WriteCustomTask {
+public class AddArticlesMetaField extends CustomTask {
 
     @Override
-    public void doService() {
+    public void runTask() {
         RegulationDispatchSystem system = RegulationDispatchSystem.getInstance();
 
         MetaFieldSet parentMetaField = system.getRegulationMetaFieldSet();
@@ -50,6 +50,6 @@ public class AddArticlesMetaField extends WriteCustomTask {
     }
 
     public static String getKey(String key) {
-        return BundleUtil.getStringFromResourceBundle("resources/RegulationDispatchResources", key);
+        return BundleUtil.getString("resources/RegulationDispatchResources", key);
     }
 }
