@@ -26,7 +26,7 @@
 	</fr:view>
 </logic:notEmpty>
 
-<logic:present role="pt.ist.bennu.core.domain.RoleType.MANAGER">
+<logic:present role="#managers">
 
 	<h3> <bean:message key="title.regulation.dispatch.system.management" bundle="REGULATION_DISPATCH_RESOURCES" /> </h3>
 	
